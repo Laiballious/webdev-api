@@ -1,21 +1,24 @@
 const express = require('express');
 const userRouter = require('../routes/userRoutes');
-//const noteRouter = require('../routes/noteRoutes');
+const noteRouter = require('../routes/noteRoutes');
+const router = require('../routes/cartRoutes');
+
 const app = express();
 const mongoose = require("mongoose");
 
 
 
 app.use(express.json());
-app.use((req , res , next) =>{
-    console.log("HTTP Method -" + req.method+ " , URL - "+ req.url);
+app.use((req, res, next) => {
+    console.log("HTTP Method -" + req.method + " , URL - " + req.url);
     next();
 
 
 });
 
 app.use("/user", userRouter);
-//app.use("/note", noteRouter);
+app.use("/note", noteRouter);
+app.use("/cart", router);
 
 
 
